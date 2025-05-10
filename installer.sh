@@ -1,8 +1,12 @@
 #!/bin/bash
 # installation script to fix .desktop files
+# vars
+pkgver="2"
+pkgver_major="13"
+pkgver_minor="14"
 # functions
 install () {
-    wget https://github.com/psygreg/firealpaca-deb/releases/download/2.13.14/FireAlpaca.deb;
+    wget https://github.com/psygreg/firealpaca-deb/releases/download/"$pkgver"."$pkgver_major"."$pkgver_minor"/FireAlpaca.deb;
     sudo dpkg -i FireAlpaca.deb;
     sudo sed -i '5 s|.*|Exec=/opt/FireAlpaca/usr/bin/FireAlpaca|' /opt/FireAlpaca/FireAlpaca.desktop;
     sudo sed -i '5 s|.*|Exec=/opt/FireAlpaca/usr/bin/FireAlpaca|' /usr/share/applications/FireAlpaca.desktop;
