@@ -12,9 +12,7 @@ install () {
     sudo sed -i '5 s|.*|Exec=/opt/FireAlpaca/usr/bin/FireAlpaca|' /usr/share/applications/FireAlpaca.desktop;
     sudo sed -i '6 s|.*|Icon=fa|' /usr/share/applications/FireAlpaca.desktop;
 }
-# runtime
-. /etc/os-release
-if [ "$ID_LIKE" == "debian" ]; then
+run () {
     if command -v wget >/dev/null 2>&1; then
         install
         echo "All done."
@@ -27,6 +25,13 @@ if [ "$ID_LIKE" == "debian" ]; then
         sleep 3
         exit 0
     fi
+}
+# runtime
+. /etc/os-release
+if [ "$ID_LIKE" == "debian" ]; then
+    run
+elif [ "$ID_LIKE" == "ubuntu debian" ]; then
+    run
 else
     echo "Invalid operating system."
     sleep 3
