@@ -14,15 +14,25 @@ install () {
 }
 run () {
     if command -v wget >/dev/null 2>&1; then
+        cd $HOME
+        mkdir firealpaca-deb
+        cd firealpaca-deb
         install
         echo "All done."
         sleep 3
+        cd ..
+        rm -rf firealpaca-deb
         exit 0
     else
         sudo apt install wget
+        cd $HOME
+        mkdir firealpaca-deb
+        cd firealpaca-deb
         install
         echo "All done."
         sleep 3
+        cd ..
+        rm -rf firealpaca-deb
         exit 0
     fi
 }
