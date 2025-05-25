@@ -41,9 +41,9 @@ run () {
 # runtime
 depcheck
 . /etc/os-release
-if [ "$ID_LIKE" == "debian" ]; then
+if [[ "$ID_LIKE" =~ (ubuntu|debian) ]]; then
     run
-elif [ "$ID_LIKE" == "ubuntu debian" ]; then
+elif [ "$ID" == "debian" ]; then
     run
 else
     whiptail --title FireAlpaca Installer --msgbox Invalid Operating System. 8 78
